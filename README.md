@@ -1,6 +1,8 @@
 中文语音合成器，这个参考英文的语言识别项目，但是中文的语音识别难度很不一样
 
 
+####################训练tacotron2的中文模型##############################
+
 #第一步：
 我们需要用到的数据集为baker，可以从这里下载：https://www.data-baker.com/ 不过现在官网好像没有直接的下载链接，大家可以多百度一下看看有没有云盘链接，应该很好找
 
@@ -27,6 +29,8 @@ python examples/tacotron2/train_tacotron2.py --train-dir ./dump/train/ \
   --resume examples/tacotron2/exp/train.tacotron2.baker.v1/checkpoints/
   
   ###################接着训练MelGAN模型#################
+  
+  
   python examples/multiband_melgan/train_multiband_melgan.py --train-dir ./dump/train/ \
   --dev-dir ./dump/valid/ \
   --outdir ./examples/multiband_melgan/exp/train.multiband_melgan.baker.v1/ \
