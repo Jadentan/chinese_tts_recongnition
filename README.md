@@ -13,13 +13,17 @@
 
 第三步：
 运行这条命令，生成我们训练数据：
+
 tensorflow-tts-preprocess --dataset baker --rootdir /media/samsung/datasets/voice/Biaobei --outdir dump --config ./preprocess/baker_preprocess.yaml 
 
 第四步：
 对数据进行标准化:
+
 tensorflow-tts-normalize --rootdir ./dump --outdir ./dump --dataset baker --config preprocess/baker_preprocess.yaml
+
 第五步：
 开始训练：
+
 python examples/tacotron2/train_tacotron2.py --train-dir ./dump/train/ \
   --dev-dir ./dump/valid/ \
   --outdir ./examples/tacotron2/exp/train.tacotron2.baker.v1/ \
@@ -27,6 +31,7 @@ python examples/tacotron2/train_tacotron2.py --train-dir ./dump/train/ \
   --use-norm 1 \
   --mixed_precision 0 \
   --resume examples/tacotron2/exp/train.tacotron2.baker.v1/checkpoints/
+  
   
   ###################接着训练MelGAN模型#################
   
@@ -38,6 +43,7 @@ python examples/tacotron2/train_tacotron2.py --train-dir ./dump/train/ \
   --use-norm 1 \
   --generator_mixed_precision 1 \
   --resume ""
+  
   
   然后就可以demo了，有了语音合成器，我们还差什么？差一个聊天机器人，回头我再实现一个基于中文语料的transformer的聊天机器人，齐活儿了。
   
