@@ -45,6 +45,9 @@ python examples/tacotron2/train_tacotron2.py --train-dir ./dump/train/ \
   --resume ""
   
   
+  
+  
+  想自己测试demo:可以参看已经训练的模型 自行下载。链接: https://pan.baidu.com/s/1lTqc1HwtNAQTqEgVHfRCzQ 提取码: u42w 
   然后就可以demo了，有了语音合成器，我们还差什么？差一个聊天机器人，回头我再实现一个基于中文语料的transformer的聊天机器人，齐活儿了。
   
 
