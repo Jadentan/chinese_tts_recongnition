@@ -9,6 +9,18 @@
 第二步：
 你已经把代码clone下来了，接下来请安装一下。你还需要两个步骤：
 1.你需要把数据处理成训练需要的格式；
+
+
+000001    卡尔普#2陪外孙#1玩滑梯#4。
+    ka2 er2 pu3 pei2 wai4 sun1 wan2 hua2 ti1
+000002    假语村言#2别再#1拥抱我#4。
+    jia2 yu3 cun1 yan2 bie2 zai4 yong1 bao4 wo3
+000003    宝马#1配挂#1跛骡鞍#3，貂蝉#1怨枕#2董翁榻#4。
+    bao2 ma3 pei4 gua4 bo3 luo2 an1 diao1 chan2 yuan4 zhen3 dong3 weng1 ta4
+000004    邓小平#2与#1撒切尔#2会晤#4。
+    deng4 xiao3 ping2 yu3 sa4 qie4 er3 hui4 wu4
+
+
 2.你需要配置用于训练的config文件：
 
 第三步：
