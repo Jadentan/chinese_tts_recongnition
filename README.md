@@ -1,7 +1,42 @@
 中文语音合成器，这个参考英文的语言识别项目，但是中文的语音识别难度很不一样
 
 
+#第一步：
+我们需要用到的数据集为baker，可以从这里下载：https://www.data-baker.com/ 不过现在官网好像没有直接的下载链接，大家可以多百度一下看看有没有云盘链接，应该很好找
 
+第二步：
+你已经把代码clone下来了，接下来请安装一下。你还需要两个步骤：
+1.你需要把数据处理成训练需要的格式；
+2.你需要配置用于训练的config文件：
+
+第三步：
+运行这条命令，生成我们训练数据：
+tensorflow-tts-preprocess --dataset baker --rootdir /media/samsung/datasets/voice/Biaobei --outdir dump --config ./preprocess/baker_preprocess.yaml 
+
+第四步：
+对数据进行标准化:
+tensorflow-tts-normalize --rootdir ./dump --outdir ./dump --dataset baker --config preprocess/baker_preprocess.yaml
+第五步：
+开始训练：
+python examples/tacotron2/train_tacotron2.py --train-dir ./dump/train/ \
+  --dev-dir ./dump/valid/ \
+  --outdir ./examples/tacotron2/exp/train.tacotron2.baker.v1/ \
+  --config ./examples/tacotron2/conf/tacotron2.baker.v1.yaml \
+  --use-norm 1 \
+  --mixed_precision 0 \
+  --resume examples/tacotron2/exp/train.tacotron2.baker.v1/checkpoints/
+  
+  ###################接着训练MelGAN模型#################
+  python examples/multiband_melgan/train_multiband_melgan.py --train-dir ./dump/train/ \
+  --dev-dir ./dump/valid/ \
+  --outdir ./examples/multiband_melgan/exp/train.multiband_melgan.baker.v1/ \
+  --config ./examples/multiband_melgan/conf/multiband_melgan.baker.v1.yaml \
+  --use-norm 1 \
+  --generator_mixed_precision 1 \
+  --resume ""
+  
+  然后就可以demo了，有了语音合成器，我们还差什么？差一个聊天机器人，回头我再实现一个基于中文语料的transformer的聊天机器人，齐活儿了。
+  
 
 
 
